@@ -1,4 +1,5 @@
-import { Github, Link as LinkIcon, MapPin } from "lucide-react";
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import { Github, Link as LinkIcon, MapPin, Linkedin } from "lucide-react";
 import Head from "next/head";
 import Link from "next/link";
 import { type MutableRefObject, useRef, type PropsWithChildren } from "react";
@@ -14,6 +15,20 @@ import {
 } from "~/components/ui/card";
 import { Inter } from "@next/font/google";
 import { cn } from "~/lib/utils";
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "~/components/ui/form";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "~/components/ui/input";
+import { Textarea } from "~/components/ui/textarea";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -74,13 +89,10 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div
-                    ref={homeRef}
-                    className="flex h-screen scroll-m-16 items-center justify-center"
-                >
+                <div ref={homeRef} className="flex h-screen scroll-m-16">
                     <HomeContent>
                         <Button size={"lg"} onClick={() => scrollTo(contactRef)}>
-                            Contact
+                            CONTACT ME
                         </Button>
                     </HomeContent>
                 </div>
@@ -138,32 +150,115 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div ref={contactRef} className="container h-screen scroll-m-14">
+                <div
+                    ref={contactRef}
+                    className="container h-[calc(100vh-3rem)] scroll-m-14"
+                >
                     <SectionTitle>CONTACT</SectionTitle>
+                    <div className="flex items-center justify-center">
+                        <ContactForm />
+                    </div>
                 </div>
             </main>
         </>
     );
 }
 
+const formSchema = z.object({
+    email: z.string().email({ message: "valid email example 'name@example.com'" }),
+    name: z.string().optional(),
+    message: z.string(),
+});
+
+const ContactForm = () => {
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            email: "",
+            name: "",
+            message: "",
+        },
+    });
+
+    const handleSubmit = (values: z.infer<typeof formSchema>) => {
+        console.log(values);
+    };
+
+    return (
+        <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="w-96 lg:w-1/2">
+                <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Email</FormLabel>
+                            <FormControl>
+                                <Input placeholder="" {...field} />
+                            </FormControl>
+                            <FormDescription></FormDescription>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Name</FormLabel>
+                            <FormControl>
+                                <Input placeholder="Full name" {...field} />
+                            </FormControl>
+                            <FormDescription></FormDescription>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Message</FormLabel>
+                            <FormControl>
+                                <Textarea
+                                    placeholder="Type your message here..."
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormDescription></FormDescription>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <Button type="submit">Submit</Button>
+            </form>
+        </Form>
+    );
+};
+
 const AboutContent = () => {
     return (
         <div className="container grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <div className="hidden  items-center justify-center lg:flex">
+            <div className="hidden items-center justify-center lg:flex">
                 <img
                     className="rounded-md shadow-lg shadow-primary/70"
                     src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
                 />
             </div>
-            <div>
-                <SectionTitle>ABOUT ME</SectionTitle>
-                <span className="text-2xl font-bold">
-                    A passionate Full-stack Developer Based in
-                    <div className="flex items-center text-primary">
-                        <span>malmo, Sweden</span>
-                        <MapPin />
-                    </div>
-                </span>
+            <div className="flex flex-col justify-between">
+                <div>
+                    <SectionTitle>ABOUT ME</SectionTitle>
+                    <span className="text-2xl font-bold">
+                        A passionate Full-stack Developer Based in
+                        <div className="flex items-center text-primary">
+                            <span>malmo, Sweden</span>
+                            <MapPin />
+                        </div>
+                    </span>
+                </div>
+
                 <p className="tracking-wide">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem quod
                     optio alias error fuga enim nam obcaecati voluptatum id quibusdam.
@@ -186,24 +281,22 @@ const AboutContent = () => {
 
 const HomeContent: React.FC<PropsWithChildren> = ({ children }) => {
     return (
-        <div className="flex h-1/2 w-1/2 flex-col justify-between space-y-4 rounded-md border bg-muted p-8 shadow-lg shadow-primary">
-            <div>
-                <h1 className="scroll-m-20 text-6xl font-extrabold tracking-tight lg:text-8xl">
-                    Hello, I'm Emil
-                </h1>
-                <h2 className="scroll-m-20 pb-2 text-right text-5xl font-semibold tracking-tight transition-colors first:mt-0">
-                    <span className="font-normal">I'm a </span>
-                    <span className="rounded-lg px-1 font-bold text-primary">
-                        Full-stack developer
-                    </span>
+        <div className="space-y-24 px-24 pt-32">
+            <div className="flex gap-4">
+                <Link href={""}>
+                    <Github />
+                </Link>
+                <Link href={""}>
+                    <Linkedin />
+                </Link>
+            </div>
+            <div className="">
+                <h2 className="text-7xl font-bold">
+                    Hello,
+                    <br />
+                    I'm Emil, <br />
+                    <span className="text-primary">full-stack developer</span>
                 </h2>
-                <p className="mt-8">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-                    neque quia nostrum ea blanditiis, voluptas veniam, a est laborum
-                    eligendi quibusdam dolorum animi quasi tempore maxime facilis commodi
-                    consectetur odit, dicta soluta dolor ipsa! Iusto temporibus quidem
-                    voluptatum explicabo sapiente.
-                </p>
             </div>
             <div>{children}</div>
         </div>
