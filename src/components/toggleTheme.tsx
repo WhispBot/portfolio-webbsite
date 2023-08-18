@@ -22,7 +22,7 @@ const ThemeToggle = () => {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
-                align="end"
+                align="start"
                 onCloseAutoFocus={(e) => void e.preventDefault()}
             >
                 <DropdownMenuItem

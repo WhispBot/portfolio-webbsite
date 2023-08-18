@@ -1,8 +1,17 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { Github, Link as LinkIcon, MapPin, Linkedin } from "lucide-react";
+import {
+    Github,
+    Link as LinkIcon,
+    MapPin,
+    Linkedin,
+    HomeIcon,
+    User,
+    Code,
+    Mail,
+} from "lucide-react";
 import Head from "next/head";
 import Link from "next/link";
-import { type MutableRefObject, useRef, type PropsWithChildren } from "react";
+import { type MutableRefObject, useRef, type PropsWithChildren, useEffect } from "react";
 import ThemeToggle from "~/components/toggleTheme";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
@@ -51,118 +60,121 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={cn(inter.className)}>
-                <div className="sticky top-0 ">
-                    <div className="flex items-center justify-between px-8 py-2">
-                        <Link href="/" className="text-2xl font-semibold">
-                            ES
-                        </Link>
-                        <div className="rounded-md border bg-background/90">
-                            <div className="flex gap-2 font-semibold">
+                <div className="relative flex">
+                    <div className="sticky top-0 h-screen p-4">
+                        <div className="grid h-full w-20 grid-rows-[0.1fr_1fr_0.1fr] items-center rounded-md border bg-card">
+                            <div className="grid place-content-center">
+                                <Link href="/" className="text-2xl font-semibold">
+                                    ES
+                                </Link>
+                            </div>
+                            <div className="flex flex-col items-center justify-center gap-8 font-semibold">
                                 <Button
-                                    variant={"ghost"}
+                                    variant={"nav"}
+                                    size={"icon"}
                                     onClick={() => scrollTo(homeRef)}
                                 >
-                                    Home
+                                    <HomeIcon className="h-16 w-16" />
                                 </Button>
                                 <Button
-                                    variant={"ghost"}
+                                    variant={"nav"}
+                                    size={"icon"}
                                     onClick={() => scrollTo(aboutRef)}
                                 >
-                                    About me
+                                    <User className="h-16 w-16" />
                                 </Button>
-
                                 <Button
-                                    variant={"ghost"}
+                                    variant={"nav"}
+                                    size={"icon"}
                                     onClick={() => scrollTo(projRef)}
                                 >
-                                    Projects
+                                    <Code className="h-16 w-16" />
                                 </Button>
                                 <Button
-                                    variant={"ghost"}
+                                    variant={"nav"}
+                                    size={"icon"}
                                     onClick={() => scrollTo(contactRef)}
                                 >
-                                    Contact
+                                    <Mail className="h-16 w-16" />
                                 </Button>
                             </div>
+                            <div className="flex justify-center">
+                                <ThemeToggle />
+                            </div>
                         </div>
-                        <ThemeToggle />
                     </div>
-                </div>
+                    <div className="flex-1">
+                        <div ref={homeRef} className="h-screen scroll-m-0 p-8">
+                            <HomeContent>
+                                <Button size={"lg"} onClick={() => scrollTo(contactRef)}>
+                                    CONTACT ME
+                                </Button>
+                            </HomeContent>
+                        </div>
 
-                <div ref={homeRef} className="flex h-screen scroll-m-16">
-                    <HomeContent>
-                        <Button size={"lg"} onClick={() => scrollTo(contactRef)}>
-                            CONTACT ME
-                        </Button>
-                    </HomeContent>
-                </div>
+                        <div ref={aboutRef} className="h-screen scroll-m-0 p-8">
+                            <AboutContent />
+                        </div>
 
-                <div className="flex h-screen items-center justify-center">
-                    <div ref={aboutRef} className="w-full scroll-m-14 bg-muted py-16">
-                        <AboutContent />
-                    </div>
-                </div>
+                        <div ref={projRef} className="h-screen scroll-m-0 p-8">
+                            <ProjectContent />
+                        </div>
 
-                <div ref={projRef} className="container h-screen scroll-m-14">
-                    <SectionTitle>PROJECTS</SectionTitle>
-                    <div className="grid grid-cols-1 lg:grid-cols-2">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Web store</CardTitle>
-                                <CardDescription>Description</CardDescription>
-                            </CardHeader>
-                            <CardContent className="grid grid-cols-[0.2fr_1fr]">
-                                <div className="flex flex-col items-center justify-between gap-4">
-                                    <div className="flex flex-col items-center gap-2">
-                                        <span className="text-sm text-muted-foreground">
-                                            Tech used
-                                        </span>
-                                        <Badge>React</Badge>
-                                        <Badge>Tailwindcss</Badge>
-                                        <Badge>Prisma</Badge>
-                                        <Badge>Next</Badge>
-                                    </div>
-                                    <div className="flex gap-2">
-                                        <Link
-                                            href={""}
-                                            target="_blank"
-                                            className="flex gap-1"
-                                        >
-                                            <span className="font-semibold">Code</span>
-                                            <Github />
-                                        </Link>
-                                        <Link
-                                            href={""}
-                                            target="_blank"
-                                            className="flex gap-1"
-                                        >
-                                            <span className="font-semibold">Demo</span>
-                                            <LinkIcon />
-                                        </Link>
-                                    </div>
-                                </div>
-                                <img
-                                    className="aspect-video h-64 justify-self-center rounded-sm"
-                                    src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
-                                />
-                            </CardContent>
-                        </Card>
-                    </div>
-                </div>
-
-                <div
-                    ref={contactRef}
-                    className="container h-[calc(100vh-3rem)] scroll-m-14"
-                >
-                    <SectionTitle>CONTACT</SectionTitle>
-                    <div className="flex items-center justify-center">
-                        <ContactForm />
+                        <div ref={contactRef} className="h-screen scroll-m-0 p-8">
+                            <SectionTitle>CONTACT</SectionTitle>
+                            <div className="flex items-center justify-center">
+                                <ContactForm />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
         </>
     );
 }
+
+const ProjectContent = () => {
+    return (
+        <>
+            <SectionTitle>PROJECTS</SectionTitle>
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Web store</CardTitle>
+                        <CardDescription>Description</CardDescription>
+                    </CardHeader>
+                    <CardContent className="grid grid-cols-[0.2fr_1fr]">
+                        <div className="flex flex-col items-center justify-between gap-4">
+                            <div className="flex flex-col items-center gap-2">
+                                <span className="text-sm text-muted-foreground">
+                                    Tech used
+                                </span>
+                                <Badge>React</Badge>
+                                <Badge>Tailwindcss</Badge>
+                                <Badge>Prisma</Badge>
+                                <Badge>Next</Badge>
+                            </div>
+                            <div className="flex gap-2">
+                                <Link href={""} target="_blank" className="flex gap-1">
+                                    <span className="font-semibold">Code</span>
+                                    <Github />
+                                </Link>
+                                <Link href={""} target="_blank" className="flex gap-1">
+                                    <span className="font-semibold">Demo</span>
+                                    <LinkIcon />
+                                </Link>
+                            </div>
+                        </div>
+                        <img
+                            className="aspect-video h-64 justify-self-center rounded-sm"
+                            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+                        />
+                    </CardContent>
+                </Card>
+            </div>
+        </>
+    );
+};
 
 const formSchema = z.object({
     email: z.string().email({ message: "valid email example 'name@example.com'" }),
@@ -281,24 +293,29 @@ const AboutContent = () => {
 
 const HomeContent: React.FC<PropsWithChildren> = ({ children }) => {
     return (
-        <div className="space-y-24 px-24 pt-32">
-            <div className="flex gap-4">
-                <Link href={""}>
-                    <Github />
-                </Link>
-                <Link href={""}>
-                    <Linkedin />
-                </Link>
-            </div>
+        <div className="space-y-24 px-14 pt-32">
             <div className="">
                 <h2 className="text-7xl font-bold">
                     Hello,
                     <br />
-                    I'm Emil, <br />
-                    <span className="text-primary">full-stack developer</span>
+                    I'm Emil,
+                    <br />
+                    <span className=" text-primary drop-shadow-lg">
+                        full-stack developer
+                    </span>
                 </h2>
             </div>
-            <div>{children}</div>
+            <div>
+                <div className="flex items-center gap-4">
+                    {children}
+                    <Link href={""}>
+                        <Github />
+                    </Link>
+                    <Link href={""}>
+                        <Linkedin />
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 };
