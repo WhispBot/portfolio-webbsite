@@ -20,7 +20,7 @@ export interface IProjectCard {
 
 const ProjectCard: React.FC<IProjectCard> = (props) => {
     return (
-        <div className="rounded-md border bg-card p-8 text-card-foreground">
+        <div className="rounded-md border bg-card p-8 text-card-foreground shadow-lg">
             <div className="flex">
                 <div className="flex flex-col items-center justify-between gap-4">
                     <div className="text-center">

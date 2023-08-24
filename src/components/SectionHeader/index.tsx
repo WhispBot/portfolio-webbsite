@@ -1,35 +1,18 @@
 import React from "react";
-import { cn } from "~/lib/utils";
 
-const SectionHeader: React.FC<React.PropsWithChildren & { side?: "right" | "left" }> = ({
-    children,
-    side = "left",
-}) => {
+const SectionHeader: React.FC<React.PropsWithChildren> = ({ children }) => {
     return (
-        <div className="mb-4 h-10 space-y-2">
-            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight text-primary">
-                {children}
-            </h3>
-            <div
-                className={cn(
-                    "flex h-1 w-full gap-2 rounded-full bg-black/10 dark:bg-white/20",
-                    side === "right" && "justify-end"
-                )}
-            >
-                {side === "left" && (
-                    <>
-                        <div className="h-1 w-24 rounded-full bg-black dark:bg-white" />
-                        <div className="h-1 w-4 rounded-full bg-black dark:bg-white" />
-                        <div className="h-1 w-2 rounded-full bg-black dark:bg-white" />
-                    </>
-                )}
-                {side === "right" && (
-                    <>
-                        <div className="h-1 w-2 rounded-full bg-black dark:bg-white" />
-                        <div className="h-1 w-4 rounded-full bg-black dark:bg-white" />
-                        <div className="h-1 w-24 rounded-full bg-black dark:bg-white" />
-                    </>
-                )}
+        <div className="mb-4 flex h-10 items-center gap-2 space-y-2 whitespace-nowrap">
+            <div className="flex items-end">
+                <span className="text-4xl font-extrabold">
+                    {children}
+                    {/* <span className="text-primary">.</span> */}
+                </span>
+            </div>
+            <div className="flex h-1 w-full gap-2 rounded-full bg-black/10 dark:bg-white/10">
+                <div className="h-1 w-24 rounded-full bg-primary" />
+                <div className="h-1 w-4 rounded-full bg-primary" />
+                <div className="h-1 w-2 rounded-full bg-primary" />
             </div>
         </div>
     );

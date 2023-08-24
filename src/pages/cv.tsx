@@ -16,7 +16,7 @@ const CvPage = () => {
             <div className="flex h-screen gap-8 border-x bg-card p-4">
                 <div className="h-full">
                     <div className="flex flex-col items-center gap-4 justify-self-center p-16">
-                        <div className="grid h-36 w-36 place-content-center rounded-full bg-background">
+                        <div className="grid h-36 w-36 place-content-center rounded-full border bg-background">
                             <span className="text-6xl font-bold">ES</span>
                         </div>
                         <div>

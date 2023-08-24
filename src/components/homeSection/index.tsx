@@ -12,6 +12,7 @@ import {
     BiLogoTailwindCss,
     BiLogoTypescript,
 } from "react-icons/bi";
+import Reveal from "../reveal";
 
 const HomeSection: React.FC<React.PropsWithChildren> = ({ children }) => {
     const router = useRouter();
@@ -41,30 +42,27 @@ const HomeSection: React.FC<React.PropsWithChildren> = ({ children }) => {
                 </Button>
             </div>
             <div className="flex flex-1 flex-col justify-center gap-16">
-                <div className="">
-                    <div className="flex items-end">
-                        <h2 className="text-9xl font-extrabold">{"Hello, I'm Emil"}</h2>
-                        <svg width="30" height="30">
-                            <circle cx="15" cy="15" r="10" className="fill-primary" />
-                            <circle cx="12" cy="12" r="10" className="fill-accent2" />
-                        </svg>
-                    </div>
-                    <div className="flex gap-3 whitespace-nowrap">
-                        <span className="text-5xl">{"I'm a"}</span>
-                        <div className="relative">
-                            <h2 className="absolute left-1 top-1 text-5xl font-extrabold text-primary">
-                                full-stack developer
-                            </h2>
-                            <h2 className="absolute left-0 top-0 text-5xl font-extrabold text-accent2">
-                                full-stack developer
-                            </h2>
+                <div className="w-fit space-y-4">
+                    <Reveal>
+                        <div className="flex items-center gap-2">
+                            <span className="text-5xl font-extrabold tracking-tight lg:text-8xl">
+                                {"Hey, I'm Emil"}
+                            </span>
+                            <div className="flex h-1 gap-2 rounded-full">
+                                <div className="h-1 w-24 rounded-full bg-primary" />
+                                <div className="h-1 w-4 rounded-full bg-primary" />
+                                <div className="h-1 w-2 rounded-full bg-primary" />
+                            </div>
                         </div>
-                    </div>
+                    </Reveal>
+                    <Reveal>
+                        <span className="text-5xl font-thin">{"I'm a "}</span>
+                        <span className="text-5xl font-extrabold text-primary">
+                            {"Full-stack developer"}
+                        </span>
+                    </Reveal>
                 </div>
-                <div className="flex items-center text-4xl text-muted-foreground">
-                    <p className="text-sm font-semibold uppercase italic text-muted-foreground">
-                        Javascript / Typescript / React / Css / Html
-                    </p>
+                <div className="flex items-center gap-8 text-3xl text-muted-foreground">
                     <BiLogoTypescript />
                     <BiLogoJavascript />
                     <BiLogoCss3 />

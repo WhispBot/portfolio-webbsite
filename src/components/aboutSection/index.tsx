@@ -1,16 +1,25 @@
 import { MapPin } from "lucide-react";
+import { Badge } from "../ui/badge";
+import Reveal from "../reveal";
+
+const tech: string[] = [
+    "Javascript",
+    "Typescript",
+    "CSS",
+    "HTML",
+    "React",
+    "Github",
+    "Vercel",
+    "Express",
+    "Nodejs",
+    "Redux",
+];
 
 const AboutSection = () => {
     return (
-        <div className=" container grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <div className="hidden items-center justify-center lg:flex">
-                <img
-                    className="rounded-md shadow-lg shadow-primary/70"
-                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
-                />
-            </div>
+        <div className="grid-cols-1gap-8 grid lg:grid-cols-[1fr_0.5fr]">
             <div className="flex flex-col justify-between">
-                <div>
+                {/* <div>
                     <span className="text-2xl font-bold">
                         A passionate Full-stack Developer Based in
                         <div className="flex items-center text-primary">
@@ -18,23 +27,64 @@ const AboutSection = () => {
                             <MapPin />
                         </div>
                     </span>
+                </div> */}
+                <div className="space-y-6">
+                    <Reveal>
+                        <p className="leading-7 [&:not(:first-child)]:mt-6">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et,
+                            ut repudiandae quae delectus, totam, expedita soluta quidem
+                            inventore harum architecto fugit commodi fugiat ducimus
+                            repellat suscipit excepturi doloremque sed error corporis
+                            quibusdam dolorem! Quisquam, voluptates quam voluptatibus
+                            quaerat ipsum ad.
+                        </p>
+                    </Reveal>
+                    <Reveal>
+                        <p className="leading-7 [&:not(:first-child)]:mt-6">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Dolore accusamus labore facilis quaerat facere doloribus
+                            repellendus beatae ipsam asperiores inventore, eum ullam? Enim
+                            hic, laborum nobis eos aliquid totam quibusdam.
+                        </p>
+                    </Reveal>
+                    <Reveal>
+                        <p className="leading-7 [&:not(:first-child)]:mt-6">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Dolore accusamus labore facilis quaerat facere doloribus
+                            repellendus beatae ipsam asperiores inventore, eum ullam? Enim
+                            hic, laborum nobis eos aliquid totam quibusdam.
+                        </p>
+                    </Reveal>
+                    <Reveal>
+                        <p className="leading-7 [&:not(:first-child)]:mt-6">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Dolore accusamus labore facilis quaerat facere doloribus
+                            repellendus beatae ipsam asperiores inventore, eum ullam? Enim
+                            hic, laborum nobis eos aliquid totam quibusdam.
+                        </p>
+                    </Reveal>
+                    <Reveal>
+                        <p className="leading-7 [&:not(:first-child)]:mt-6">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Dolore accusamus labore facilis quaerat facere doloribus
+                            repellendus beatae ipsam asperiores inventore, eum ullam? Enim
+                            hic, laborum nobis eos aliquid totam quibusdam.
+                        </p>
+                    </Reveal>
                 </div>
-
-                <p className="tracking-wide">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem quod
-                    optio alias error fuga enim nam obcaecati voluptatum id quibusdam.
-                    Porro aliquid ducimus repudiandae, perferendis repellendus doloremque
-                    tenetur fugiat. Enim rem voluptatem vitae necessitatibus accusantium
-                    maxime rerum quidem voluptatibus reprehenderit culpa, eveniet fuga
-                    recusandae repudiandae aliquam delectus? Deserunt atque temporibus ab
-                    magnam maiores itaque doloribus voluptatum, veniam earum asperiores
-                    blanditiis aspernatur placeat ducimus beatae, accusamus repellat!
-                    Fugiat dicta laborum debitis consequuntur quos? Aspernatur ullam
-                    tempora rem animi quae aut blanditiis nostrum sint vitae accusantium
-                    quo exercitationem natus iste deleniti modi, vero, perferendis
-                    veritatis quibusdam dignissimos porro quasi numquam! Vel,
-                    consequuntur?
-                </p>
+            </div>
+            <div className="">
+                <div className="flex flex-wrap gap-1">
+                    {tech.map((tech, index) => (
+                        <Badge
+                            key={index}
+                            variant={"secondary"}
+                            className="text-md font-normal"
+                        >
+                            {tech}
+                        </Badge>
+                    ))}
+                </div>
             </div>
         </div>
     );

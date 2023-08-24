@@ -4,7 +4,7 @@ import Link from "next/link";
 import { type MutableRefObject, useRef, useEffect, useState } from "react";
 import ThemeToggle from "~/components/toggleTheme";
 import { Button } from "~/components/ui/button";
-import { Inter } from "@next/font/google";
+import { Open_Sans, Montserrat } from "@next/font/google";
 import { cn } from "~/lib/utils";
 import ProjectSection from "~/components/projectSection";
 import HomeSection from "~/components/homeSection";
@@ -15,13 +15,18 @@ import {
     Card,
     CardContent,
     CardDescription,
+    CardFooter,
     CardHeader,
     CardTitle,
 } from "~/components/ui/card";
 import { motion } from "framer-motion";
 import Reveal from "~/components/reveal";
 
-const inter = Inter({
+const MontserRat = Montserrat({
+    subsets: ["latin"],
+});
+
+const OpenSans = Open_Sans({
     subsets: ["latin"],
 });
 
@@ -81,7 +86,7 @@ export default function Home() {
         return () => {
             window.removeEventListener("scroll", checkScrollPosition);
         };
-    }, [els, navEls]);
+    }, []);
 
     return (
         <>
@@ -89,15 +94,12 @@ export default function Home() {
                 <title>ES</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={cn(inter.className)}>
+            <main className={cn(MontserRat.className)}>
                 <div className="relative flex scroll-smooth">
                     <div className="sticky top-0 h-screen p-4">
                         <div className="grid h-full w-20 grid-rows-[0.1fr_1fr_0.1fr] items-center rounded-md border bg-card">
                             <div className="grid place-content-center">
-                                <Link
-                                    href="/"
-                                    className="text-2xl font-extrabold text-primary"
-                                >
+                                <Link href="/" className="text-2xl font-extrabold ">
                                     ES
                                 </Link>
                             </div>
@@ -124,6 +126,7 @@ export default function Home() {
                                     <UserIcon className="h-16 w-16" />
                                     <SectionUnderline section="about" current={section} />
                                 </Button>
+
                                 <Button
                                     ref={navLinkPorject}
                                     variant={"nav"}
@@ -160,24 +163,18 @@ export default function Home() {
                     </div>
                     <div className="flex-1">
                         <div ref={homeRef} id="home" className=" h-screen scroll-m-0 p-8">
-                            <Reveal className="h-full">
-                                <HomeSection>
-                                    <Button
-                                        size={"lg"}
-                                        variant={"accent"}
-                                        onClick={() => scrollTo(contactRef)}
-                                    >
-                                        CONTACT ME
-                                    </Button>
-                                </HomeSection>
-                            </Reveal>
+                            <HomeSection>
+                                <Button size={"lg"} onClick={() => scrollTo(contactRef)}>
+                                    CONTACT ME
+                                </Button>
+                            </HomeSection>
                         </div>
                         <div
                             ref={aboutRef}
                             id="about"
                             className="h-screen scroll-m-0 p-8"
                         >
-                            <div className="h-full">
+                            <div className="container h-full">
                                 <SectionHeader>ABOUT ME</SectionHeader>
                                 <AboutSection />
                             </div>
@@ -187,9 +184,11 @@ export default function Home() {
                             className="h-screen scroll-m-0 p-8"
                             id="projects"
                         >
-                            <div className="h-full">
+                            <div className="container h-full">
                                 <SectionHeader>PROJECTS</SectionHeader>
-                                <ProjectSection />
+                                <Reveal>
+                                    <ProjectSection />
+                                </Reveal>
                             </div>
                         </div>
                         <div
@@ -197,21 +196,11 @@ export default function Home() {
                             className="h-screen scroll-m-0 p-8"
                             id="contact"
                         >
-                            <div className="h-full">
+                            <div className="container h-full">
                                 <SectionHeader>CONTACT</SectionHeader>
-                                <div className="flex h-[calc(100%-2.5rem)] items-center justify-center">
-                                    <Card className="w-[30rem]">
-                                        <CardHeader>
-                                            <CardTitle>Contact me</CardTitle>
-                                            <CardDescription>
-                                                Send a message if you have any questions!
-                                            </CardDescription>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <ContactForm />
-                                        </CardContent>
-                                    </Card>
-                                </div>
+                                <Reveal className="flex h-[calc(100%-2.5rem)] items-center justify-center">
+                                    <ContactForm />
+                                </Reveal>
                             </div>
                         </div>
                     </div>
@@ -229,9 +218,10 @@ const SectionUnderline: React.FC<{ section: string; current: string }> = ({
         <>
             {current === section ? (
                 <motion.div
-                    initial={{ width: "0%" }}
+                    initial={{ width: "50%" }}
                     animate={{ width: "100%" }}
                     className="h-2 w-full rounded-md bg-primary"
+                    transition={{ duration: 0.5, delay: 0 }}
                 />
             ) : (
                 <div className="h-2 w-full" />
