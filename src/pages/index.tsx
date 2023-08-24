@@ -1,13 +1,11 @@
 import { HomeIcon, UserIcon, CodeIcon, MailIcon } from "lucide-react";
 import Head from "next/head";
 import Link from "next/link";
-import { type MutableRefObject, useRef, type PropsWithChildren, useEffect } from "react";
+import { type MutableRefObject, useRef, useEffect, useState } from "react";
 import ThemeToggle from "~/components/toggleTheme";
 import { Button } from "~/components/ui/button";
 import { Inter } from "@next/font/google";
 import { cn } from "~/lib/utils";
-import ES from "../../public/LogoEs.svg";
-import Image from "next/image";
 import ProjectSection from "~/components/projectSection";
 import HomeSection from "~/components/homeSection";
 import ContactForm from "~/components/contactForm";
@@ -20,6 +18,8 @@ import {
     CardHeader,
     CardTitle,
 } from "~/components/ui/card";
+import { motion } from "framer-motion";
+import Reveal from "~/components/reveal";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -38,6 +38,8 @@ export default function Home() {
     const navLinkPorject = useRef<HTMLButtonElement>(null);
     const navLinkContact = useRef<HTMLButtonElement>(null);
 
+    const [section, setSection] = useState("home");
+
     const navEls = [navLinkHome, navLinkAbout, navLinkPorject, navLinkContact];
 
     const scrollTo = (elementRef: MutableRefObject<HTMLDivElement | null>) => {
@@ -55,7 +57,7 @@ export default function Home() {
                         el.current.offsetTop - el.current.clientHeight / 2
                     ) {
                         currentSection = el.current.id;
-                        console.log(el.current.id);
+                        setSection(el.current.id);
                     }
                 }
             });
@@ -79,7 +81,7 @@ export default function Home() {
         return () => {
             window.removeEventListener("scroll", checkScrollPosition);
         };
-    }, []);
+    }, [els, navEls]);
 
     return (
         <>
@@ -106,8 +108,10 @@ export default function Home() {
                                     size={"icon"}
                                     onClick={() => scrollTo(homeRef)}
                                     id="home"
+                                    className="flex-col"
                                 >
                                     <HomeIcon className="h-16 w-16" />
+                                    <SectionUnderline section="home" current={section} />
                                 </Button>
                                 <Button
                                     ref={navLinkAbout}
@@ -115,8 +119,10 @@ export default function Home() {
                                     size={"icon"}
                                     onClick={() => scrollTo(aboutRef)}
                                     id="about"
+                                    className="flex-col"
                                 >
                                     <UserIcon className="h-16 w-16" />
+                                    <SectionUnderline section="about" current={section} />
                                 </Button>
                                 <Button
                                     ref={navLinkPorject}
@@ -124,8 +130,13 @@ export default function Home() {
                                     size={"icon"}
                                     onClick={() => scrollTo(projRef)}
                                     id="projects"
+                                    className="flex-col"
                                 >
                                     <CodeIcon className="h-16 w-16" />
+                                    <SectionUnderline
+                                        section="projects"
+                                        current={section}
+                                    />
                                 </Button>
                                 <Button
                                     ref={navLinkContact}
@@ -133,8 +144,13 @@ export default function Home() {
                                     size={"icon"}
                                     onClick={() => scrollTo(contactRef)}
                                     id="contact"
+                                    className="flex-col"
                                 >
                                     <MailIcon className="h-16 w-16" />
+                                    <SectionUnderline
+                                        section="contact"
+                                        current={section}
+                                    />
                                 </Button>
                             </div>
                             <div className="flex justify-center">
@@ -144,15 +160,17 @@ export default function Home() {
                     </div>
                     <div className="flex-1">
                         <div ref={homeRef} id="home" className=" h-screen scroll-m-0 p-8">
-                            <HomeSection>
-                                <Button
-                                    size={"lg"}
-                                    variant={"accent"}
-                                    onClick={() => scrollTo(contactRef)}
-                                >
-                                    CONTACT ME
-                                </Button>
-                            </HomeSection>
+                            <Reveal className="h-full">
+                                <HomeSection>
+                                    <Button
+                                        size={"lg"}
+                                        variant={"accent"}
+                                        onClick={() => scrollTo(contactRef)}
+                                    >
+                                        CONTACT ME
+                                    </Button>
+                                </HomeSection>
+                            </Reveal>
                         </div>
                         <div
                             ref={aboutRef}
@@ -202,3 +220,22 @@ export default function Home() {
         </>
     );
 }
+
+const SectionUnderline: React.FC<{ section: string; current: string }> = ({
+    section,
+    current,
+}) => {
+    return (
+        <>
+            {current === section ? (
+                <motion.div
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    className="h-2 w-full rounded-md bg-primary"
+                />
+            ) : (
+                <div className="h-2 w-full" />
+            )}
+        </>
+    );
+};
