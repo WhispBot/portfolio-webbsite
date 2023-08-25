@@ -13,7 +13,7 @@ const Header = () => {
                 <div>
                     <div className="flex gap-2 font-semibold">
                         <NavLink href={"#"}>Home</NavLink>
-                        <Button onClick={scrollTo}></Button>
+                        <Button></Button>
                         <NavLink href={"#about"}>About me</NavLink>
                         <NavLink href={"#projects"}>Projects</NavLink>
                         <NavLink href={"#contact"}>Contact</NavLink>

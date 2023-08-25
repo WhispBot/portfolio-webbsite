@@ -24,22 +24,23 @@ const ThemeToggle = () => {
             <DropdownMenuContent
                 align="start"
                 onCloseAutoFocus={(e) => void e.preventDefault()}
+                className="rounded-br-none p-2"
             >
                 <DropdownMenuItem
                     onClick={() => setTheme("light")}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 rounded-br-none"
                 >
                     <Sun /> Light
                 </DropdownMenuItem>
                 <DropdownMenuItem
                     onClick={() => setTheme("dark")}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 rounded-br-none"
                 >
                     <Moon /> Dark
                 </DropdownMenuItem>
                 <DropdownMenuItem
                     onClick={() => setTheme("system")}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 rounded-br-none"
                 >
                     <Laptop2 /> System
                 </DropdownMenuItem>

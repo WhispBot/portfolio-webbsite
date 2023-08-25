@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "~/lib/utils";
 
 const buttonVariants = cva(
-    "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center rounded-md text-sm font-medium  ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
     {
         variants: {
             variant: {
                 default:
                     "bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg rounded-br-none",
                 destructive:
-                    "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+                    "bg-destructive text-destructive-foreground hover:bg-destructive/90 ",
                 outline:
-                    "border-2 border-primary hover:border-primary/90 hover:text-primary/90 font-bold text-primary",
+                    "border-2 border-primary hover:border-primary/90 hover:text-primary/90 font-bold text-primary rounded-tl-none",
                 secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-                ghost: "hover:bg-accent hover:text-accent-foreground",
+                ghost: "hover:bg-accent hover:text-accent-foreground rounded-br-none",
                 link: "text-primary underline-offset-4 hover:underline",
                 nav: "text-muted-foreground hover:text-primary/90",
                 accent: "bg-gradient-to-tl from-primary to-accent2 text-primary-foreground hover:from-primary/90 hover:to-accent2/90",
