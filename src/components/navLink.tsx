@@ -10,16 +10,18 @@ const NavLink: React.FC<LinkProps & PropsWithChildren> = ({
     children,
     ...props
 }) => {
-    // const segment = useSelectedLayoutSegment();
     const router = useRouter();
 
-    const active = href === `/${router.basePath}`;
+    const active = href === router.pathname;
 
     return (
         <Link
             href={href}
             {...props}
-            className={cn(active && "underline", "rounded-md bg-muted px-4 py-2")}
+            className={cn(
+                active && "font-semibold text-primary",
+                " uppercase transition-colors hover:text-primary"
+            )}
         >
             {children}
         </Link>

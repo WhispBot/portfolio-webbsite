@@ -6,41 +6,50 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
-import { Laptop2, Sun, Moon } from "lucide-react";
-import { Button } from "./ui/button";
+import { Laptop2, Sun, MoonStar } from "lucide-react";
+import { cn } from "~/lib/utils";
 
 const ThemeToggle = () => {
-    const { setTheme } = useTheme();
+    const { setTheme, theme } = useTheme();
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                    <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <button className="transition-colors hover:text-primary">
+                    <Sun className="dark:hidden" />
+                    <MoonStar className="hidden dark:flex" />
                     <span className="sr-only">Toggle theme</span>
-                </Button>
+                </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
-                align="start"
+                align="end"
                 onCloseAutoFocus={(e) => void e.preventDefault()}
-                className="rounded-br-none p-2"
+                className=""
             >
                 <DropdownMenuItem
                     onClick={() => setTheme("light")}
-                    className="flex items-center gap-2 rounded-br-none"
+                    className={cn(
+                        "flex items-center gap-2",
+                        theme === "light" && "text-primary"
+                    )}
                 >
                     <Sun /> Light
                 </DropdownMenuItem>
                 <DropdownMenuItem
                     onClick={() => setTheme("dark")}
-                    className="flex items-center gap-2 rounded-br-none"
+                    className={cn(
+                        "flex items-center gap-2",
+                        theme === "dark" && "text-primary"
+                    )}
                 >
-                    <Moon /> Dark
+                    <MoonStar /> Dark
                 </DropdownMenuItem>
                 <DropdownMenuItem
                     onClick={() => setTheme("system")}
-                    className="flex items-center gap-2 rounded-br-none"
+                    className={cn(
+                        "flex items-center gap-2",
+                        theme === "system" && "text-primary"
+                    )}
                 >
                     <Laptop2 /> System
                 </DropdownMenuItem>

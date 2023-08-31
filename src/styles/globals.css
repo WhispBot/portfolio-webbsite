@@ -24,7 +24,7 @@
         --border: 193 5.9% 90%;
         --input: 193 5.9% 90%;
         --ring: 193 76.2% 36.3%;
-        --radius: 0.75rem;
+        --radius: 0.5rem;
         --accent2: 334 100% 77%;
     }
     .dark {
@@ -53,7 +53,7 @@
 
 @layer base {
     * {
-        @apply border-border;
+        @apply box-border border-border;
     }
     body {
         @apply bg-background text-foreground antialiased;

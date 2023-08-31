@@ -13,9 +13,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
     return (
         <SessionProvider session={session}>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                {/* <Header /> */}
-                <Component {...pageProps} />
-                {/* <footer className="h-24"></footer> */}
+                <div className="flex h-screen flex-col lg:overflow-hidden">
+                    <Header />
+                    <Component {...pageProps} />
+                </div>
             </ThemeProvider>
         </SessionProvider>
     );

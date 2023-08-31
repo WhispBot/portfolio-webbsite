@@ -1,27 +1,32 @@
 import Link from "next/link";
 import NavLink from "./navLink";
 import ThemeToggle from "./toggleTheme";
-import { Button } from "./ui/button";
+import { Github, Linkedin } from "lucide-react";
 
 const Header = () => {
     return (
-        <div className="sticky top-0 border-b bg-background">
-            <div className="flex items-center justify-between px-8 py-2">
-                <Link href="/" className="text-2xl font-semibold">
-                    ES
+        <nav className="flex w-full border-b">
+            <div className="flex basis-1/3 gap-2 border-l p-8 ">Logo</div>
+            <div className="hidden basis-1/3 items-center justify-center gap-8 border-l p-8 lg:flex">
+                <NavLink href="/">Home</NavLink>
+                <NavLink href="/about">About</NavLink>
+                <NavLink href="/projects">Projects</NavLink>
+            </div>
+            <div className="hidden flex-grow items-center justify-center gap-8 border-l p-8 lg:flex">
+                <Link href="#" className="transition-colors hover:text-primary">
+                    <Github />
                 </Link>
-                <div>
-                    <div className="flex gap-2 font-semibold">
-                        <NavLink href={"#"}>Home</NavLink>
-                        <Button></Button>
-                        <NavLink href={"#about"}>About me</NavLink>
-                        <NavLink href={"#projects"}>Projects</NavLink>
-                        <NavLink href={"#contact"}>Contact</NavLink>
-                    </div>
-                </div>
+                <Link href="#" className="transition-colors hover:text-primary">
+                    <Linkedin />
+                </Link>
                 <ThemeToggle />
             </div>
-        </div>
+            <div className=" flex flex-grow items-center justify-center gap-2 border-l p-8">
+                <Link href="#" className="font-bold uppercase">
+                    Get in touch
+                </Link>
+            </div>
+        </nav>
     );
 };
 export default Header;

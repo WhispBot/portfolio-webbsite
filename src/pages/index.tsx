@@ -1,32 +1,19 @@
-import { HomeIcon, UserIcon, CodeIcon, MailIcon } from "lucide-react";
 import Head from "next/head";
-import Link from "next/link";
 import { type MutableRefObject, useRef, useEffect, useState } from "react";
-import ThemeToggle from "~/components/toggleTheme";
-import { Button } from "~/components/ui/button";
-import { Open_Sans, Montserrat } from "@next/font/google";
+import { Montserrat } from "@next/font/google";
 import { cn } from "~/lib/utils";
-import ProjectSection from "~/components/projectSection";
-import HomeSection from "~/components/homeSection";
-import ContactForm from "~/components/contactForm";
-import AboutSection from "~/components/aboutSection";
-import SectionHeader from "~/components/SectionHeader";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "~/components/ui/card";
-import { motion } from "framer-motion";
 import Reveal from "~/components/reveal";
+import {
+    BiLogoCss3,
+    BiLogoHtml5,
+    BiLogoJavascript,
+    BiLogoNodejs,
+    BiLogoReact,
+    BiLogoTailwindCss,
+    BiLogoTypescript,
+} from "react-icons/bi";
 
 const MontserRat = Montserrat({
-    subsets: ["latin"],
-});
-
-const OpenSans = Open_Sans({
     subsets: ["latin"],
 });
 
@@ -91,141 +78,59 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>ES</title>
+                <title>Home</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={cn(MontserRat.className)}>
-                <div className="relative flex scroll-smooth">
-                    <div className="sticky top-0 h-screen p-4">
-                        <div className="grid h-full w-20 grid-rows-[0.1fr_1fr_0.1fr] items-center rounded-md border bg-card">
-                            <div className="grid place-content-center">
-                                <Link href="/" className="text-2xl font-extrabold ">
-                                    ES
-                                </Link>
+            <main
+                className={cn(
+                    MontserRat.className,
+                    "grid flex-grow grid-cols-1  lg:grid-cols-[2fr_1fr] lg:grid-rows-[2fr_1fr]"
+                )}
+            >
+                <article className="flex h-full flex-col items-center justify-center gap-16">
+                    <div className="w-fit space-y-4">
+                        <Reveal>
+                            <div className="flex items-center gap-2">
+                                <span className="text-5xl font-extrabold tracking-tight lg:text-8xl">
+                                    {"Hey, I'm Emil"}
+                                </span>
+                                <div className="flex h-1 gap-2 rounded-full">
+                                    <div className="h-1 w-24 rounded-full bg-primary" />
+                                    <div className="h-1 w-4 rounded-full bg-primary" />
+                                    <div className="h-1 w-2 rounded-full bg-primary" />
+                                </div>
                             </div>
-                            <div className="flex flex-col items-center justify-center gap-8 font-semibold">
-                                <Button
-                                    ref={navLinkHome}
-                                    variant={"nav"}
-                                    size={"icon"}
-                                    onClick={() => scrollTo(homeRef)}
-                                    id="home"
-                                    className="flex-col"
-                                >
-                                    <HomeIcon className="h-16 w-16" />
-                                    <SectionUnderline section="home" current={section} />
-                                </Button>
-                                <Button
-                                    ref={navLinkAbout}
-                                    variant={"nav"}
-                                    size={"icon"}
-                                    onClick={() => scrollTo(aboutRef)}
-                                    id="about"
-                                    className="flex-col"
-                                >
-                                    <UserIcon className="h-16 w-16" />
-                                    <SectionUnderline section="about" current={section} />
-                                </Button>
-
-                                <Button
-                                    ref={navLinkPorject}
-                                    variant={"nav"}
-                                    size={"icon"}
-                                    onClick={() => scrollTo(projRef)}
-                                    id="projects"
-                                    className="flex-col"
-                                >
-                                    <CodeIcon className="h-16 w-16" />
-                                    <SectionUnderline
-                                        section="projects"
-                                        current={section}
-                                    />
-                                </Button>
-                                <Button
-                                    ref={navLinkContact}
-                                    variant={"nav"}
-                                    size={"icon"}
-                                    onClick={() => scrollTo(contactRef)}
-                                    id="contact"
-                                    className="flex-col"
-                                >
-                                    <MailIcon className="h-16 w-16" />
-                                    <SectionUnderline
-                                        section="contact"
-                                        current={section}
-                                    />
-                                </Button>
-                            </div>
-                            <div className="flex justify-center">
-                                <ThemeToggle />
-                            </div>
-                        </div>
+                        </Reveal>
+                        <Reveal>
+                            <span className="text-5xl font-thin">{"I'm a "}</span>
+                            <span className="text-5xl font-extrabold text-primary">
+                                {"Full-stack developer"}
+                            </span>
+                        </Reveal>
                     </div>
-                    <div className="flex-1">
-                        <div ref={homeRef} id="home" className=" h-screen scroll-m-0 p-8">
-                            <HomeSection>
-                                <Button size={"lg"} onClick={() => scrollTo(contactRef)}>
-                                    CONTACT ME
-                                </Button>
-                            </HomeSection>
+                </article>
+                <article className="flex h-full items-center border-l px-16">
+                    <div className="flex flex-col gap-8 text-3xl ">
+                        <div className="flex items-center gap-8">
+                            <BiLogoTypescript className="text-primary" />
+                            <span className="text-2xl font-semibold">Typescript</span>
                         </div>
-                        <div
-                            ref={aboutRef}
-                            id="about"
-                            className="h-screen scroll-m-0 p-8"
-                        >
-                            <div className="container h-full">
-                                <SectionHeader>ABOUT ME</SectionHeader>
-                                <AboutSection />
-                            </div>
+                        <div className="flex items-center gap-8">
+                            <BiLogoJavascript className="text-primary" />
+                            <span className="text-2xl font-semibold">Javascript</span>
                         </div>
-                        <div
-                            ref={projRef}
-                            className="h-screen scroll-m-0 p-8"
-                            id="projects"
-                        >
-                            <div className="container h-full">
-                                <SectionHeader>PROJECTS</SectionHeader>
-                                <Reveal>
-                                    <ProjectSection />
-                                </Reveal>
-                            </div>
-                        </div>
-                        <div
-                            ref={contactRef}
-                            className="h-screen scroll-m-0 p-8"
-                            id="contact"
-                        >
-                            <div className="container h-full">
-                                <SectionHeader>CONTACT</SectionHeader>
-                                <Reveal className="flex h-[calc(100%-2.5rem)] items-center justify-center">
-                                    <ContactForm />
-                                </Reveal>
-                            </div>
-                        </div>
+                        <BiLogoCss3 />
+                        <BiLogoHtml5 />
+                        <BiLogoReact />
+                        <BiLogoNodejs />
+                        <BiLogoTailwindCss />
                     </div>
-                </div>
+                </article>
+                <article className="flex h-full items-center border-t px-16">
+                    <h1 className="text-8xl font-extrabold">HOME</h1>
+                </article>
+                <article className="h-full border-l border-t"></article>
             </main>
         </>
     );
 }
-
-const SectionUnderline: React.FC<{ section: string; current: string }> = ({
-    section,
-    current,
-}) => {
-    return (
-        <>
-            {current === section ? (
-                <motion.div
-                    initial={{ width: "50%" }}
-                    animate={{ width: "100%" }}
-                    className="h-2 w-full rounded-md bg-primary"
-                    transition={{ duration: 0.5, delay: 0 }}
-                />
-            ) : (
-                <div className="h-2 w-full" />
-            )}
-        </>
-    );
-};

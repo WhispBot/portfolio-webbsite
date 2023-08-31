@@ -20,17 +20,30 @@ export interface IProjectCard {
 
 const ProjectCard: React.FC<IProjectCard> = (props) => {
     return (
-        <div className="rounded-md border bg-card p-8 text-card-foreground shadow-lg">
-            <div className="flex">
-                <div className="flex flex-col items-center justify-between gap-4">
-                    <div className="text-center">
-                        <span className="text-2xl font-bold">{props.title}</span>
+        <div className="rounded-md border bg-card text-card-foreground shadow-lg">
+            <div className="">
+                <div className="">
+                    <img
+                        className="aspect-video h-full rounded-lg rounded-tl-none"
+                        src={props.imgUrl}
+                    />
+                </div>
+                <div className="space-y-2 p-4">
+                    <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                            <span className="whitespace-nowrap text-xl font-bold">
+                                {props.title}
+                            </span>
+                            <div className="flex gap-2 overflow-hidden">
+                                <Badge>Nextjs</Badge>
+                                <Badge>Typescript</Badge>
+                                <Badge>Tailwindcss</Badge>
+                                <Badge>HTML</Badge>
+                            </div>
+                        </div>
                         <p className="text-sm text-muted-foreground">
                             {props.description}
                         </p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <span className="text-sm text-muted-foreground">Tech used</span>
                     </div>
                     <div className="flex gap-4">
                         <Link
@@ -50,12 +63,6 @@ const ProjectCard: React.FC<IProjectCard> = (props) => {
                             <LinkIcon />
                         </Link>
                     </div>
-                </div>
-                <div className="flex flex-1 justify-center ">
-                    <img
-                        className="aspect-video h-64 justify-self-center rounded-sm"
-                        src={props.imgUrl}
-                    />
                 </div>
             </div>
         </div>
