@@ -97,7 +97,7 @@ const AboutPage = () => {
                     </div>
                 </article>
                 <article className="row-start-1 flex h-full items-center border-b border-t p-8 lg:row-start-auto lg:border-t">
-                    <div>
+                    <div className="uppercase">
                         <span className="text-2xl font-extrabold md:text-3xl lg:text-5xl">
                             {"Passionate"}
                             <br />
