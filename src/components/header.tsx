@@ -22,7 +22,7 @@ const Header = () => {
                 <ThemeToggle />
             </div>
             <div className=" flex flex-grow items-center justify-center gap-2 border-l p-8">
-                <Link href="#" className="font-bold uppercase">
+                <Link href="#" className="whitespace-nowrap font-bold uppercase">
                     Get in touch
                 </Link>
             </div>
