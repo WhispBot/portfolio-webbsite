@@ -13,10 +13,16 @@ const Header = () => {
                 <NavLink href="/projects">Projects</NavLink>
             </div>
             <div className="hidden flex-grow items-center justify-center gap-8 border-l p-8 lg:flex">
-                <Link href="#" className="transition-colors hover:text-primary">
+                <Link
+                    href="#"
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                >
                     <Github />
                 </Link>
-                <Link href="#" className="transition-colors hover:text-primary">
+                <Link
+                    href="#"
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                >
                     <Linkedin />
                 </Link>
                 <ThemeToggle />
