@@ -42,7 +42,8 @@ const AboutPage = () => {
                 <article className="flex h-full flex-col items-center justify-center border-b p-8 lg:border-none">
                     <div className="space-y-6 lg:container">
                         <p className="leading-7 [&:not(:first-child)]:mt-6">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et,
+                            <span className="bg-secondary p-2">L</span>
+                            orem, ipsum dolor sit amet consectetur adipisicing elit. Et,
                             ut repudiandae quae delectus, totam, expedita soluta quidem
                             inventore harum architecto fugit commodi fugiat ducimus
                             repellat suscipit excepturi doloremque sed error corporis
@@ -64,9 +65,9 @@ const AboutPage = () => {
                     </div>
                 </article>
                 <article className="flex h-full flex-col gap-4 border-l p-8 lg:flex-row">
-                    <div className="flex-grow space-y-4">
-                        <h3 className="text-xl font-bold">Front-end</h3>
-                        <ul className="flex h-full flex-col gap-2">
+                    <div className="flex-grow space-y-4 ">
+                        <h3 className="text-2xl font-semibold">Front-end</h3>
+                        <ul className="flex h-full flex-col items-center gap-2 lg:items-start">
                             <ListItem icon={TbBrandReact} text="React" />
                             <ListItem icon={TbBrandVite} text="Vite" />
                             <ListItem icon={TbBrandTailwind} text="Tailwindcss" />
@@ -78,16 +79,16 @@ const AboutPage = () => {
                         </ul>
                     </div>
                     <div className="flex-grow space-y-4">
-                        <h3 className="text-xl font-bold">Back-end</h3>
-                        <ul className="flex h-full flex-col gap-2">
+                        <h3 className="text-2xl font-semibold">Back-end</h3>
+                        <ul className="flex h-full flex-col items-center gap-2 lg:items-start">
                             <ListItem icon={TbBrandNextjs} text="Next" />
                             <ListItem icon={IoLogoNodejs} text="Nodejs" />
                             <ListItem icon={TbBrandMysql} text="MySql" />
                         </ul>
                     </div>
                     <div className="h-full space-y-4 lg:hidden">
-                        <h3 className="text-xl font-bold">Tools</h3>
-                        <ul className="flex flex-col gap-2">
+                        <h3 className="text-2xl font-semibold ">Tools</h3>
+                        <ul className="flex flex-col items-center gap-2 ">
                             <ListItem icon={TbBrandVscode} text="Vs Code" />
                             <ListItem icon={TbBrandGit} text="Git" />
                             <ListItem icon={TbBrandGithub} text="Github" />
@@ -96,7 +97,7 @@ const AboutPage = () => {
                         </ul>
                     </div>
                 </article>
-                <article className="row-start-1 flex h-full items-center border-b border-t p-8 lg:row-start-auto lg:border-t">
+                <article className="row-start-1 flex h-full items-center p-8 lg:row-start-auto lg:border-t">
                     <div className="uppercase">
                         <span className="text-2xl font-extrabold md:text-3xl lg:text-5xl">
                             {"Passionate"}
@@ -115,8 +116,8 @@ const AboutPage = () => {
                 </article>
                 <article className="hidden h-full border-l border-t p-8 lg:flex">
                     <div className="h-full space-y-4">
-                        <h3 className="text-xl font-bold">Tools</h3>
-                        <ul className="flex  flex-wrap gap-2">
+                        <h3 className="text-2xl font-semibold">Tools</h3>
+                        <ul className="flex flex-wrap gap-2">
                             <ListItem icon={TbBrandVscode} text="Vs Code" />
                             <ListItem icon={TbBrandGit} text="Git" />
                             <ListItem icon={TbBrandGithub} text="Github" />
