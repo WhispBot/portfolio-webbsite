@@ -36,10 +36,10 @@ const AboutPage = () => {
             <main
                 className={cn(
                     MontserRat.className,
-                    "grid flex-grow grid-cols-1 grid-rows-[0.3fr_0.5fr_0.5fr] lg:grid-cols-[2fr_1fr] lg:grid-rows-[2fr_1fr]"
+                    "grid flex-grow grid-cols-1 grid-rows-[0.3fr_0.5fr_0.5fr] xl:grid-cols-[2fr_1fr] xl:grid-rows-[2fr_1fr]"
                 )}
             >
-                <article className="flex h-full flex-col items-center justify-center border-b p-8 lg:border-none">
+                <article className="flex h-full flex-col items-center justify-center border-b p-8 xl:border-none">
                     <div className="space-y-6 lg:container">
                         <p className="leading-7 [&:not(:first-child)]:mt-6">
                             <span className="bg-secondary p-2">L</span>
@@ -64,10 +64,10 @@ const AboutPage = () => {
                         </p>
                     </div>
                 </article>
-                <article className="flex h-full flex-col gap-4 border-l p-8 lg:flex-row">
+                <article className="flex h-full flex-col gap-4 border-l p-8 xl:flex-row">
                     <div className="flex-grow space-y-4 ">
                         <h3 className="text-2xl font-semibold">Front-end</h3>
-                        <ul className="flex h-full flex-col items-center gap-2 lg:items-start">
+                        <ul className="flex h-full flex-col items-center gap-2 xl:items-start">
                             <ListItem icon={TbBrandReact} text="React" />
                             <ListItem icon={TbBrandVite} text="Vite" />
                             <ListItem icon={TbBrandTailwind} text="Tailwindcss" />
@@ -80,7 +80,7 @@ const AboutPage = () => {
                     </div>
                     <div className="flex-grow space-y-4">
                         <h3 className="text-2xl font-semibold">Back-end</h3>
-                        <ul className="flex h-full flex-col items-center gap-2 lg:items-start">
+                        <ul className="flex h-full flex-col items-center gap-2 xl:items-start">
                             <ListItem icon={TbBrandNextjs} text="Next" />
                             <ListItem icon={IoLogoNodejs} text="Nodejs" />
                             <ListItem icon={TbBrandMysql} text="MySql" />
@@ -97,9 +97,9 @@ const AboutPage = () => {
                         </ul>
                     </div>
                 </article>
-                <article className="row-start-1 flex h-full items-center p-8 lg:row-start-auto lg:border-t">
+                <article className="row-start-1 flex h-full items-center p-8 xl:row-start-auto xl:border-t">
                     <div className="uppercase">
-                        <span className="text-2xl font-extrabold md:text-3xl lg:text-5xl">
+                        <span className="text-2xl font-extrabold md:text-3xl xl:text-5xl">
                             {"Passionate"}
                             <br />
                             {"Full-stack Developer"}
@@ -107,14 +107,14 @@ const AboutPage = () => {
                             {"Based in"}
                         </span>
                         <div className="flex items-center gap-2 text-primary">
-                            <span className="text-2xl font-bold md:text-3xl lg:text-5xl">
+                            <span className="text-2xl font-bold md:text-3xl xl:text-5xl">
                                 {"malmo, Sweden"}
                             </span>
                             <MapPin />
                         </div>
                     </div>
                 </article>
-                <article className="hidden h-full border-l border-t p-8 lg:flex">
+                <article className="hidden h-full border-l border-t p-8 xl:flex">
                     <div className="h-full space-y-4">
                         <h3 className="text-2xl font-semibold">Tools</h3>
                         <ul className="flex flex-wrap gap-2">
@@ -135,7 +135,7 @@ export default AboutPage;
 const ListItem: React.FC<{ icon: IconType; text: string }> = ({ icon: Icon, text }) => {
     return (
         <li className="flex items-center gap-2 text-lg">
-            <Icon className="text-3xl  text-primary lg:text-4xl" />
+            <Icon className="text-3xl text-primary xl:text-4xl" />
             <span>{text}</span>
         </li>
     );
