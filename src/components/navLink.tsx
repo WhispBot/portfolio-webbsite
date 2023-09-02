@@ -20,11 +20,11 @@ const NavLink: React.FC<LinkProps & PropsWithChildren> = ({
             {...props}
             className={cn(
                 " font-semibold uppercase text-muted-foreground transition-colors hover:text-foreground",
-                active && " text-primary underline"
+                active && " text-primary "
             )}
         >
             {children}
-            {active && <div className="  h-1 w-full rounded-full bg-primary" />}
+            {active && <div className="h-1 w-full rounded-full bg-primary" />}
         </Link>
     );
 };
