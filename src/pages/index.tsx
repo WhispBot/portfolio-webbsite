@@ -17,63 +17,6 @@ const MontserRat = Montserrat({
 });
 
 export default function Home() {
-    // const aboutRef = useRef<HTMLDivElement>(null);
-    // const homeRef = useRef<HTMLDivElement>(null);
-    // const projRef = useRef<HTMLDivElement>(null);
-    // const contactRef = useRef<HTMLDivElement>(null);
-
-    // const els = [homeRef, aboutRef, projRef, contactRef];
-
-    // const navLinkHome = useRef<HTMLButtonElement>(null);
-    // const navLinkAbout = useRef<HTMLButtonElement>(null);
-    // const navLinkPorject = useRef<HTMLButtonElement>(null);
-    // const navLinkContact = useRef<HTMLButtonElement>(null);
-
-    // const [section, setSection] = useState("home");
-
-    // const navEls = [navLinkHome, navLinkAbout, navLinkPorject, navLinkContact];
-
-    // const scrollTo = (elementRef: MutableRefObject<HTMLDivElement | null>) => {
-    //     elementRef.current?.scrollIntoView({ behavior: "smooth" });
-    // };
-
-    // useEffect(() => {
-    //     const checkScrollPosition = () => {
-    //         let currentSection = "home";
-
-    //         els.forEach((el) => {
-    //             if (el.current !== null) {
-    //                 if (
-    //                     window.scrollY >=
-    //                     el.current.offsetTop - el.current.clientHeight / 2
-    //                 ) {
-    //                     currentSection = el.current.id;
-    //                     setSection(el.current.id);
-    //                 }
-    //             }
-    //         });
-
-    //         navEls.forEach((nav) => {
-    //             if (nav.current !== null) {
-    //                 if (nav.current.id.includes(currentSection)) {
-    //                     document
-    //                         .querySelector(".text-primary")
-    //                         ?.classList.remove("text-primary");
-    //                     nav.current.classList.add("text-primary");
-    //                 }
-    //             }
-    //         });
-    //     };
-
-    //     navLinkHome.current?.classList.add("text-primary");
-
-    //     window.addEventListener("scroll", checkScrollPosition);
-
-    //     return () => {
-    //         window.removeEventListener("scroll", checkScrollPosition);
-    //     };
-    // }, []);
-
     return (
         <>
             <Head>
