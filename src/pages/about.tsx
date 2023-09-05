@@ -31,7 +31,6 @@ const AboutPage = () => {
         <>
             <Head>
                 <title>About</title>
-                <link rel="icon" href="/favicon.ico" />
             </Head>
             <main
                 className={cn(
