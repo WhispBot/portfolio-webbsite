@@ -15,7 +15,7 @@ const ThemeToggle = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <button className="transition-colors hover:text-primary">
+                <button className="text-muted-foreground transition-colors hover:text-foreground">
                     <Sun className="dark:hidden" />
                     <MoonStar className="hidden dark:flex" />
                     <span className="sr-only">Toggle theme</span>
@@ -29,8 +29,8 @@ const ThemeToggle = () => {
                 <DropdownMenuItem
                     onClick={() => setTheme("light")}
                     className={cn(
-                        "flex items-center gap-2",
-                        theme === "light" && "text-primary"
+                        "flex items-center gap-2 text-muted-foreground",
+                        theme === "light" && "text-foreground"
                     )}
                 >
                     <Sun /> Light
@@ -38,8 +38,8 @@ const ThemeToggle = () => {
                 <DropdownMenuItem
                     onClick={() => setTheme("dark")}
                     className={cn(
-                        "flex items-center gap-2",
-                        theme === "dark" && "text-primary"
+                        "flex items-center gap-2 text-muted-foreground",
+                        theme === "dark" && "text-foreground"
                     )}
                 >
                     <MoonStar /> Dark
@@ -47,8 +47,8 @@ const ThemeToggle = () => {
                 <DropdownMenuItem
                     onClick={() => setTheme("system")}
                     className={cn(
-                        "flex items-center gap-2",
-                        theme === "system" && "text-primary"
+                        "flex items-center gap-2 text-muted-foreground",
+                        theme === "system" && "text-foreground"
                     )}
                 >
                     <Laptop2 /> System
