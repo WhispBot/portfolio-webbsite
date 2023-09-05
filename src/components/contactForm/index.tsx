@@ -54,19 +54,21 @@ const ContactForm = () => {
                     className="flex h-full flex-col"
                 >
                     <CardHeader>
-                        <CardTitle>Contact me</CardTitle>
+                        <CardTitle className="uppercase">get in touch</CardTitle>
                         <CardDescription>
                             Send a message if you have any questions
                         </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                        <div className="grid grid-cols-2 gap-4">
+                    <CardContent className="flex flex-col gap-2">
+                        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                             <FormField
                                 control={form.control}
                                 name="name"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Name</FormLabel>
+                                        <FormLabel>
+                                            Name <span className="text-primary">*</span>
+                                        </FormLabel>
                                         <FormControl>
                                             <Input {...field} placeholder="Joe" />
                                         </FormControl>
@@ -94,7 +96,9 @@ const ContactForm = () => {
                             name="email"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Email</FormLabel>
+                                    <FormLabel>
+                                        Email <span className="text-primary">*</span>
+                                    </FormLabel>
                                     <FormControl>
                                         <Input
                                             {...field}
@@ -110,7 +114,9 @@ const ContactForm = () => {
                             name="message"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Message</FormLabel>
+                                    <FormLabel>
+                                        Message <span className="text-primary">*</span>
+                                    </FormLabel>
                                     <FormControl>
                                         <Textarea
                                             {...field}

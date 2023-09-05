@@ -18,7 +18,7 @@ const Header = () => {
     }, [lg]);
 
     return (
-        <nav className="flex w-full justify-between border-b">
+        <nav className="sticky left-0 top-0 z-10 flex w-full justify-between border-b bg-background">
             <div className="flex basis-1/3 gap-2 px-8 py-4 lg:py-8">
                 <Logo className="lg:h-[40px] lg:w-[40px]" />
             </div>
@@ -98,6 +98,7 @@ const Header = () => {
                             <NavLink
                                 href="/contact"
                                 className="whitespace-nowrap font-bold"
+                                onClick={() => setIsOpen(false)}
                             >
                                 Get in touch
                             </NavLink>
