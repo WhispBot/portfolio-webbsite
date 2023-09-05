@@ -20,9 +20,9 @@ const NavLink: React.FC<LinkProps & PropsWithChildren & { className?: string }> 
             href={href}
             {...props}
             className={cn(
-                className ?? "",
                 "font-semibold uppercase text-muted-foreground transition-colors hover:text-foreground",
-                active && " text-primary "
+                active && " text-primary ",
+                className ?? ""
             )}
         >
             {children}

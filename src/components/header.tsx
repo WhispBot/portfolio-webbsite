@@ -44,9 +44,9 @@ const Header = () => {
                     <ThemeToggle />
                 </div>
                 <div className="flex flex-grow items-center justify-center gap-2 border-l p-8">
-                    <Link href="#" className="whitespace-nowrap font-bold uppercase">
+                    <NavLink href="/contact" className="whitespace-nowrap font-bold">
                         Get in touch
-                    </Link>
+                    </NavLink>
                 </div>
             </div>
             <Sheet onOpenChange={() => setIsOpen(!isOpen)} open={isOpen}>
@@ -95,12 +95,12 @@ const Header = () => {
                             </Link>
                         </div>
                         <div className="flex flex-grow items-center justify-center gap-2 p-8 text-3xl">
-                            <Link
-                                href="#"
-                                className="whitespace-nowrap font-bold uppercase"
+                            <NavLink
+                                href="/contact"
+                                className="whitespace-nowrap font-bold"
                             >
                                 Get in touch
-                            </Link>
+                            </NavLink>
                         </div>
                     </div>
                 </SheetContent>
