@@ -3,7 +3,13 @@ import { Montserrat } from "@next/font/google";
 import { cn } from "~/lib/utils";
 import Head from "next/head";
 import ContactForm from "~/components/contactForm";
-import { Mail, MapPin, MoveUp, MoveUpRight, Phone } from "lucide-react";
+import { Mail, MapPin, MoveUpRight, Phone } from "lucide-react";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "~/components/ui/accordion";
 
 const MontserRat = Montserrat({
     subsets: ["latin"],
@@ -14,6 +20,7 @@ const ContactPage = () => {
         <>
             <Head>
                 <title>Contact</title>
+                <link rel="icon" href="/logoNos.ico" />
             </Head>
             <main
                 className={cn(
@@ -26,6 +33,33 @@ const ContactPage = () => {
                         <ContactForm />
                     </div>
                     <div className="flex h-full items-center justify-center p-4 xl:border-l xl:p-8">
+                        <div>
+                            <h3 className="text-2xl font-semibold">FAQ</h3>
+                            <Accordion type="single" collapsible>
+                                <AccordionItem value="item-1">
+                                    <AccordionTrigger>question 1</AccordionTrigger>
+                                    <AccordionContent>anwser 1</AccordionContent>
+                                </AccordionItem>
+                                <AccordionItem value="item-2">
+                                    <AccordionTrigger>question 1</AccordionTrigger>
+                                    <AccordionContent>anwser 1</AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        </div>
+                    </div>
+                    <div className="relative row-start-1 flex h-full items-center px-8 xl:row-start-auto xl:border-b xl:border-t">
+                        <h1 className="text-xl font-extrabold uppercase xl:text-6xl">
+                            Have
+                            <br /> any
+                            <br /> questions?
+                        </h1>
+                        <MoveUpRight
+                            size={128}
+                            className="absolute left-64 top-7 hidden xl:flex"
+                            strokeWidth={1}
+                        />
+                    </div>
+                    <div className="flex h-full items-center justify-center p-8 xl:border-l xl:border-t">
                         <ul className="flex flex-col gap-4">
                             <li className="flex items-center gap-4">
                                 <div className=" border  p-4">
@@ -47,19 +81,6 @@ const ContactPage = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className="relative row-start-1 flex h-full items-center px-8 xl:row-start-auto xl:border-b xl:border-t">
-                        <h1 className="text-xl font-extrabold uppercase xl:text-6xl">
-                            Have
-                            <br /> any
-                            <br /> questions?
-                        </h1>
-                        <MoveUpRight
-                            size={128}
-                            className="absolute left-64 top-7 hidden xl:flex"
-                            strokeWidth={1}
-                        />
-                    </div>
-                    <div className="hidden h-full border-t xl:flex xl:border-l"></div>
                 </article>
             </main>
         </>
