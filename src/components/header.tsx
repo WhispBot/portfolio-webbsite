@@ -30,14 +30,16 @@ const Header = () => {
                 </div>
                 <div className="flex flex-grow items-center justify-center gap-8 border-l p-8">
                     <Link
-                        href="#"
+                        href="https://github.com/WhispBot"
                         className="text-muted-foreground transition-colors hover:text-foreground"
+                        target="_blank"
                     >
                         <Github />
                     </Link>
                     <Link
-                        href="#"
+                        href="https://www.linkedin.com/in/emilstr/"
                         className="text-muted-foreground transition-colors hover:text-foreground"
+                        target="_blank"
                     >
                         <Linkedin />
                     </Link>

@@ -32,31 +32,7 @@ const Projects: Project[] = [
         laboriosam quos error, facere repellendus dolore fugit.`,
         tech: [],
         url: Img.src,
-        githubUrl: "https://github.com/WhispBot/WebStore",
-        demoUrl: "https://web-store-psi.vercel.app/",
-    },
-    {
-        id: "1",
-        title: ["Web", "Store"],
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-        earum sapiente pariatur architecto non blanditiis mollitia
-        quasi ut reiciendis dicta distinctio consequuntur, rerum
-        laboriosam quos error, facere repellendus dolore fugit.`,
-        tech: [],
-        url: Img.src,
-        githubUrl: "https://github.com/WhispBot/WebStore",
-        demoUrl: "https://web-store-psi.vercel.app/",
-    },
-    {
-        id: "2",
-        title: ["Web", "Store"],
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-        earum sapiente pariatur architecto non blanditiis mollitia
-        quasi ut reiciendis dicta distinctio consequuntur, rerum
-        laboriosam quos error, facere repellendus dolore fugit.`,
-        tech: [],
-        url: Img.src,
-        githubUrl: "https://github.com/WhispBot/WebStore",
+        githubUrl: "https://github.com/WhispBot/webstore",
         demoUrl: "https://web-store-psi.vercel.app/",
     },
 ];

@@ -52,11 +52,11 @@ export default function Home() {
                     </div>
                     <div className="flex h-full border-l"></div>
                     <div className="flex h-full border-t p-8">
-                        <div className="space-y-4">
+                        {/* <div className="space-y-4">
                             <h2 className="text-xl font-semibold">
                                 Short & sweet about me
                             </h2>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="flex h-full border-l border-t"></div>
                 </article>
