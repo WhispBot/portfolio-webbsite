@@ -2,12 +2,15 @@ import { Github, Linkedin } from "lucide-react";
 import ThemeToggle from "./toggle-theme";
 import Link from "next/link";
 import NavLink from "./nav-link";
+import Logo from "./logo";
 
 const Header = () => {
     return (
         <header>
             <nav className="sticky left-0 top-0 z-10 flex w-full justify-between border-b bg-background">
-                <div className="flex basis-1/3 gap-2 px-8 py-4 lg:py-8">Logo</div>
+                <div className="flex basis-1/3 gap-2 px-8 py-4 lg:py-8">
+                    <Logo className="lg:h-[40px] lg:w-[40px]" />
+                </div>
                 <div className="hidden basis-2/3 lg:flex">
                     <div className="flex basis-1/2 items-center justify-center gap-16 border-l p-8">
                         <NavLink href="/">Home</NavLink>
