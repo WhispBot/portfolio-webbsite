@@ -4,8 +4,11 @@ export default async function Home() {
     // const hello = await api.post.hello.query({ text: "from tRPC" });
 
     return (
-        <main className="">
-            <h1 className="text-white">Home</h1>
+        <main className="flex flex-grow items-center justify-center">
+            <div className="">
+                <h1 className="text-8xl font-bold">Hello, I'm Emil </h1>
+                <h1 className="text-6xl ">a Full-stack developer</h1>
+            </div>
         </main>
     );
 }

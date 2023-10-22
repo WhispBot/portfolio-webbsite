@@ -29,8 +29,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     disableTransitionOnChange
                 >
                     <TRPCReactProvider headers={headers()}>
-                        <Header />
-                        <div>{children}</div>
+                        <div className="flex h-screen flex-col">
+                            <Header />
+                            {children}
+                        </div>
                     </TRPCReactProvider>
                 </ThemeProvider>
             </body>
