@@ -1,13 +1,13 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
-import { sql } from "drizzle-orm";
+// import { sql } from "drizzle-orm";
 import {
-  bigint,
-  index,
-  mysqlTableCreator,
-  timestamp,
-  varchar,
+    bigint,
+    // index,
+    mysqlTableCreator,
+    // timestamp,
+    varchar,
 } from "drizzle-orm/mysql-core";
 
 /**
@@ -18,17 +18,26 @@ import {
  */
 export const mysqlTable = mysqlTableCreator((name) => `portfolio-webbsite_${name}`);
 
-export const posts = mysqlTable(
-  "post",
-  {
+export const projects = mysqlTable("projects", {
     id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
-    name: varchar("name", { length: 256 }),
-    createdAt: timestamp("created_at")
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updatedAt").onUpdateNow(),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
-);
+    title: varchar("title", { length: 256 }),
+    githubUrl: varchar("githubUrl", { length: 256 }),
+    demoUrl: varchar("demoUrl", { length: 256 }),
+    description: varchar("description", { length: 1024 }),
+    imgUrl: varchar("imgUrl", { length: 256 }),
+});
+
+// export const posts = mysqlTable(
+//     "post",
+//     {
+//         id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
+//         name: varchar("name", { length: 256 }),
+//         createdAt: timestamp("created_at")
+//             .default(sql`CURRENT_TIMESTAMP`)
+//             .notNull(),
+//         updatedAt: timestamp("updatedAt").onUpdateNow(),
+//     },
+//     (example) => ({
+//         nameIndex: index("name_idx").on(example.name),
+//     })
+// );

@@ -4,8 +4,8 @@ export default async function Home() {
     // const hello = await api.post.hello.query({ text: "from tRPC" });
 
     return (
-        <main className="bg-black">
-            <h1 className="text-white">dawd</h1>
+        <main className="">
+            <h1 className="text-white">Home</h1>
         </main>
     );
 }
