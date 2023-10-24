@@ -1,13 +1,14 @@
 import "~/styles/globals.css";
 
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { headers } from "next/headers";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { ThemeProvider } from "./_components/theme-provider";
 import Header from "./_components/header";
+import { cn } from "~/lib/utils";
 
-const inter = Inter({
+const MontserRat = Montserrat({
     subsets: ["latin"],
     variable: "--font-sans",
 });
@@ -21,7 +22,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={`font-sans ${inter.variable}`}>
+            <body
+                className={cn("flex h-screen flex-col font-sans", MontserRat.className)}
+            >
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
@@ -29,10 +32,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     disableTransitionOnChange
                 >
                     <TRPCReactProvider headers={headers()}>
-                        <div className="flex h-screen flex-col">
-                            <Header />
-                            {children}
-                        </div>
+                        <Header />
+                        {children}
                     </TRPCReactProvider>
                 </ThemeProvider>
             </body>
