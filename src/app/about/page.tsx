@@ -1,5 +1,8 @@
+import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import Icon from "../_components/icon";
 import type dynamicIconImports from "lucide-react/dynamicIconImports";
+import Link from "next/link";
+import Tooltip from "../_components/tooltip";
 
 const About = () => {
     return (
@@ -8,7 +11,9 @@ const About = () => {
                 <div className="flex h-full items-center justify-center p-8">
                     <div className="space-y-6 lg:container xl:basis-2/3 ">
                         <p className="leading-7 [&:not(:first-child)]:mt-6">
-                            <span className="bg-secondary p-2">H</span>
+                            <span className="border bg-secondary p-2 text-primary">
+                                H
+                            </span>
                             {`
                         ello, my name is Emil. I'm a passionet and kind person
                         love to code and play games. Love to work with other that
@@ -27,48 +32,53 @@ const About = () => {
                         `}
                         </p>
                         <p className="leading-7 [&:not(:first-child)]:mt-6"></p>
-                        <div className="flex items-center gap-4">
-                            <span className="text-primary">Have any question?</span>
-                            {/* <Button
-                                onClick={() => router.push("/contact")}
-                                className="uppercase"
-                            >
-                                Get in touch
-                            </Button> */}
-                        </div>
                     </div>
                 </div>
-                <div className="flex h-full flex-col justify-evenly gap-4 p-8 sm:flex-row xl:border-l ">
+                <div className="flex flex-col justify-between border-l px-8 py-16">
                     <div className="flex flex-col items-center gap-4">
                         <h3 className="text-2xl font-semibold">Front-end</h3>
-                        <ul className="flex h-full flex-col items-center gap-2 xl:items-start">
-                            <ListItem name="square-code" text="React" />
-                            <ListItem name="square-code" text="Vite" />
-                            <ListItem name="square-code" text="Tailwindcss" />
-                            <ListItem name="square-code" text="CSS" />
-                            <ListItem name="square-code" text="HTML" />
-                            <ListItem name="square-code" text="Next" />
-                            <ListItem name="square-code" text="Typescript" />
-                            <ListItem name="square-code" text="Javascript" />
+                        <ul className="flex flex-wrap items-center justify-center gap-2">
+                            <ListItem>React</ListItem>
+                            <span>|</span>
+                            <ListItem>Vite</ListItem>
+                            <span>|</span>
+                            <ListItem>Tailwindcss</ListItem>
+                            <span>|</span>
+                            <ListItem>CSS</ListItem>
+                            <span>|</span>
+                            <ListItem>HTML</ListItem>
+                            <span>|</span>
+                            <ListItem>Next</ListItem>
+                            <span>|</span>
+                            <ListItem>Typescript</ListItem>
+                            <span>|</span>
+                            <ListItem>Javascript</ListItem>
                         </ul>
                     </div>
                     <div className="flex flex-col items-center gap-4">
                         <h3 className="text-2xl font-semibold">Back-end</h3>
-                        <ul className="flex h-full flex-col items-center gap-2 xl:items-start">
-                            <ListItem name="square-code" text="Next" />
-                            <ListItem name="square-code" text="Nodejs" />
-                            <ListItem name="square-code" text="MySql" />
-                            <ListItem name="square-code" text="Planetscale" />
+                        <ul className="flex flex-wrap items-center justify-center gap-2">
+                            <ListItem>Next</ListItem>
+                            <span>|</span>
+                            <ListItem>Nodejs</ListItem>
+                            <span>|</span>
+                            <ListItem>MySql</ListItem>
+                            <span>|</span>
+                            <ListItem>Planetscale</ListItem>
                         </ul>
                     </div>
-                    <div className="flex flex-col items-center gap-4 xl:hidden">
-                        <h3 className="text-2xl font-semibold ">Tools</h3>
-                        <ul className="flex flex-col items-center gap-2 ">
-                            {/* <ListItem icon={TbBrandVscode} text="Vs Code" />
-                            <ListItem icon={TbBrandGit} text="Git" />
-                            <ListItem icon={TbBrandGithub} text="Github" />
-                            <ListItem icon={TbBrandFigma} text="Figma" />
-                            <ListItem icon={TbTerminal} text="Bash" /> */}
+                    <div className="flex flex-col items-center gap-4">
+                        <h3 className="text-2xl font-semibold">Tools</h3>
+                        <ul className="flex flex-wrap items-center justify-center gap-2">
+                            <ListItem>VScode</ListItem>
+                            <span>|</span>
+                            <ListItem>git</ListItem>
+                            <span>|</span>
+                            <ListItem>github</ListItem>
+                            <span>|</span>
+                            <ListItem>figma</ListItem>
+                            <span>|</span>
+                            <ListItem>Bash</ListItem>
                         </ul>
                     </div>
                 </div>
@@ -89,16 +99,33 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-                <div className="hidden h-full p-8 xl:flex xl:border-l xl:border-t">
-                    <div className="h-full space-y-4">
-                        <h3 className="text-2xl font-semibold">Tools</h3>
-                        <ul className="flex flex-wrap gap-2">
-                            <ListItem name="code" text="Vs Code" />
-                            {/* <ListItem name="git" text="Git" /> */}
-                            <ListItem name="github" text="Github" />
-                            <ListItem name="figma" text="Figma" />
-                            <ListItem name="terminal" text="Bash" />
-                        </ul>
+                <div className="flex flex-col items-center justify-evenly gap-4 border-l border-t p-8">
+                    <div className="flex items-center justify-center">
+                        <Link
+                            href={"/contact"}
+                            className="bg-primary p-2 text-xl uppercase text-primary-foreground"
+                        >
+                            Get in touch
+                        </Link>
+                    </div>
+                    <div className="flex  gap-4">
+                        <Tooltip text="Message me on Linkedin">
+                            <Link
+                                href={"https://www.linkedin.com/in/emilstr/"}
+                                target="_blank"
+                                className="border p-4 text-primary"
+                            >
+                                <Linkedin />
+                            </Link>
+                        </Tooltip>
+                        <Tooltip text="send email to emilstrjobb@gmail.com">
+                            <Link
+                                href={"mailto:emilstrjobb@gmail.com"}
+                                className="border p-4 text-primary"
+                            >
+                                <Mail />
+                            </Link>
+                        </Tooltip>
                     </div>
                 </div>
             </article>
@@ -108,13 +135,10 @@ const About = () => {
 
 export default About;
 
-const ListItem: React.FC<{ name: keyof typeof dynamicIconImports; text: string }> = ({
-    text,
-}) => {
+const ListItem: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
-        <li className="flex items-center gap-2 text-lg">
-            {/* <Icon name={name} className="text-primary" /> */}
-            <span className="text-base">{text}</span>
+        <li className="">
+            <span className="text-xl">{children}</span>
         </li>
     );
 };
