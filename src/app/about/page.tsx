@@ -109,7 +109,6 @@ const About = () => {
 export default About;
 
 const ListItem: React.FC<{ name: keyof typeof dynamicIconImports; text: string }> = ({
-    name,
     text,
 }) => {
     return (

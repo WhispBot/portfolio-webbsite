@@ -1,5 +1,4 @@
 import { api } from "~/trpc/server";
-import Upload from "../_components/upload";
 
 const Projects = async () => {
     const data = await api.projects.getprojects.query();
