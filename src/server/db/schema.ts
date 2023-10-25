@@ -25,6 +25,7 @@ export const projects = mysqlTable("projects", {
     demoUrl: varchar("demoUrl", { length: 256 }),
     description: varchar("description", { length: 1024 }),
     imgUrl: varchar("imgUrl", { length: 256 }),
+    tech: varchar("tech", { length: 256 }),
 });
 
 // export const posts = mysqlTable(

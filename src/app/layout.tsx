@@ -10,7 +10,6 @@ import { cn } from "~/lib/utils";
 
 const MontserRat = Montserrat({
     subsets: ["latin"],
-    variable: "--font-sans",
 });
 
 export const metadata = {
@@ -22,9 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body
-                className={cn("flex h-screen flex-col font-sans", MontserRat.className)}
-            >
+            <body className={cn("flex h-screen flex-col", MontserRat.className)}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
