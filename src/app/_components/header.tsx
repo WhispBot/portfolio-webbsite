@@ -35,9 +35,7 @@ const Header = () => {
                         <ThemeToggle />
                     </div>
                     <div className="flex flex-grow items-center justify-center gap-2 border-l p-8">
-                        {/* <NavLink href="/contact" className="whitespace-nowrap font-bold">
-                        Get in touch
-                    </NavLink> */}
+                        <NavLink href="/contact">Get in touch</NavLink>
                     </div>
                 </div>
             </nav>

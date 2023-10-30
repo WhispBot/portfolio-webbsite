@@ -1,6 +1,5 @@
-import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import Icon from "../_components/icon";
-import type dynamicIconImports from "lucide-react/dynamicIconImports";
 import Link from "next/link";
 import Tooltip from "../_components/tooltip";
 
