@@ -10,6 +10,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import usePrevious from "~/hooks/usePrevious";
+import { cn } from "~/lib/utils";
+import { useTheme } from "next-themes";
 
 interface Proj {
     title: string | null;
@@ -18,6 +20,7 @@ interface Proj {
     demoUrl: string | null;
     description: string | null;
     imgUrl: string | null;
+    imgUrlDark: string | null;
     tech: string | null;
 }
 
@@ -36,10 +39,19 @@ const variants = {
 };
 
 const Project: React.FC<ProjectProps> = ({ data }) => {
+    const { theme, systemTheme } = useTheme();
+    const [isDark, setIsDark] = useState(false);
     const [page, setPage] = useState<number>(0);
     const [state, setState] = useState(data[0]);
     const prev = usePrevious(page);
     const direction = page > prev ? 1 : -1;
+
+    useEffect(() => {
+        theme === "dark" ? setIsDark(true) : setIsDark(false);
+        if (theme === "system") {
+            systemTheme === "dark" ? setIsDark(true) : setIsDark(false);
+        }
+    }, [theme, systemTheme]);
 
     useEffect(() => {
         setState(data[page]);
@@ -58,8 +70,12 @@ const Project: React.FC<ProjectProps> = ({ data }) => {
                 className="absolute left-0 top-0 grid h-full w-full select-none grid-cols-1 grid-rows-[0.3fr_0.5fr_1fr_0.1fr] xl:grid-cols-[2fr_1fr] xl:grid-rows-[2fr_1fr]"
             >
                 <div
-                    className="relative flex h-full items-end  gap-2 bg-cover"
-                    style={{ backgroundImage: `url(${state?.imgUrl})` }}
+                    className={cn("relative flex h-full items-end  gap-2 bg-cover")}
+                    style={{
+                        backgroundImage: isDark
+                            ? `url(${state?.imgUrlDark})`
+                            : `url(${state?.imgUrl})`,
+                    }}
                 >
                     <div className="flex w-full border-t bg-background/40 backdrop-blur-md">
                         <TooltipProvider>
@@ -68,6 +84,7 @@ const Project: React.FC<ProjectProps> = ({ data }) => {
                                     <Link
                                         href={state?.githubUrl ?? ""}
                                         className="flex flex-grow items-center justify-center p-4 hover:bg-background"
+                                        target="_blank"
                                     >
                                         <Github strokeWidth={1} size={40} />
                                     </Link>
@@ -81,6 +98,7 @@ const Project: React.FC<ProjectProps> = ({ data }) => {
                                     <Link
                                         href={state?.demoUrl ?? ""}
                                         className="flex flex-grow items-center justify-center p-4 hover:bg-background"
+                                        target="_blank"
                                     >
                                         <LinkIcon strokeWidth={1} size={40} />
                                     </Link>
