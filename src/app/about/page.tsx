@@ -39,7 +39,7 @@ const About = () => {
                         <ul className="flex flex-wrap items-center justify-center gap-2">
                             <ListItem>React</ListItem>
                             <span>|</span>
-                            <ListItem>Vite</ListItem>
+                            <ListItem>Next</ListItem>
                             <span>|</span>
                             <ListItem>Tailwindcss</ListItem>
                             <span>|</span>
@@ -47,7 +47,7 @@ const About = () => {
                             <span>|</span>
                             <ListItem>HTML</ListItem>
                             <span>|</span>
-                            <ListItem>Next</ListItem>
+                            <ListItem>Vite</ListItem>
                             <span>|</span>
                             <ListItem>Typescript</ListItem>
                             <span>|</span>
@@ -102,7 +102,7 @@ const About = () => {
                     <div className="flex items-center justify-center">
                         <Link
                             href={"/contact"}
-                            className="bg-primary p-2 text-xl uppercase text-primary-foreground"
+                            className="bg-primary p-2 text-xl font-semibold uppercase text-primary-foreground"
                         >
                             Get in touch
                         </Link>
